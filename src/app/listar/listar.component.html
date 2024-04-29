@@ -1,0 +1,24 @@
+<h1>Productos desde el back</h1>
+<table>
+  <caption>
+    Lista de productos
+  </caption>
+  <tr>
+    <th>IdProducto</th>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th>Descontinuado</th>
+  </tr>
+  @for(elemento of productos;track elemento.idProducto){
+  <tr>
+    <td>{{ elemento.idProducto }}</td>
+    <td>{{ elemento.nombreProducto }}</td>
+    <td>{{ elemento.precioUnitario }}</td>
+    <td>@if(elemento.discontinued==1){Descontinuado}@else {No descontinuado}</td>
+    <td><button type="button" [routerLink]="['edicion',elemento.idProducto]">Modificar</button></td>
+    <td><button type="button" (click)="eliminar(elemento.idProducto)">Eliminar</button></td>
+  </tr>
+  }
+</table>
+<button routerLink="alta">Alta de un nuevo producto</button>
+<router-outlet></router-outlet>
